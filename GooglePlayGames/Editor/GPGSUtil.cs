@@ -15,6 +15,8 @@
 // </copyright>
 // Keep this even on unsupported configurations.
 
+#define GAMEWORKSTORE_COMPATIBILITY
+
 namespace GooglePlayGames.Editor
 {
     using System;
@@ -121,6 +123,20 @@ namespace GooglePlayGames.Editor
             {
                 if (string.IsNullOrEmpty(mRootPath))
                 {
+#if GAMEWORKSTORE_COMPATIBILITY
+                    //allow google play plugin find the correct path to its own folder:
+                    string[] packageManagerDirs = Directory.GetDirectories("Library/PackageCache/");
+                    foreach (var dir in packageManagerDirs)
+                    {
+                        string[] packageManagerSubfolder = Directory.GetDirectories(dir, RootFolderName, SearchOption.AllDirectories);
+                        foreach (var subdir in packageManagerSubfolder)
+                        {
+                            //UnityEngine.Debug.Log(subdir);
+                            mRootPath = SlashesToPlatformSeparator(subdir);
+                            return mRootPath;
+                        }
+                    }
+#endif
                     string[] dirs = Directory.GetDirectories("Assets", RootFolderName, SearchOption.AllDirectories);
                     switch (dirs.Length)
                     {
