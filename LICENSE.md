@@ -1,3 +1,26 @@
+Copyright (c) 2020 Game Workstore
+
+   Game Workstore is indie game studio located on Brazil.
+   The objective of this package is to standalize playgameplugin with Unity Package Manager.
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+Copyright (c) 2014 Google Inc. All rights reserved.
+
+The Google Play Games plugin for Unity® is an open-source project whose goal is to provide a plugin that allows game developers to integrate with the Google Play Games API from a game written in Unity®. However, this project is not in any way endorsed or supervised by Unity Technologies.
+
+Unity® is a trademark of Unity Technologies.
+
                                  Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
