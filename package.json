@@ -1,7 +1,7 @@
 {
   "name": "com.gameworkstore.playgamespluginforunity",
   "displayName": "GameWorkstore GooglePlayGames",
-  "version": "1.0.10.11",
+  "version": "1.0.1011",
   "unity": "2020.1",
   "keywords": [ "patterns", "list", "oop", "structures" ],
   "description": "GameWorkstore standalized Google Play Games plugin",
