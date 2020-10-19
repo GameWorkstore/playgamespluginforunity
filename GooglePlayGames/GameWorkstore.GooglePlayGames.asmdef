@@ -1,5 +1,5 @@
 {
-    "name": "GooglePlayGames",
+    "name": "GameWorkstore.GooglePlayGames",
     "references": [],
     "includePlatforms": [
         "Android",
