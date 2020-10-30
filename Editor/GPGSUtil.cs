@@ -109,8 +109,12 @@ namespace GooglePlayGames.Editor
         /// </summary>
         /// <remarks>The Games SDK requires additional metadata in the AndroidManifest.xml
         ///     file. </remarks>
+#if GAMEWORKSTORE_COMPATIBILITY
+        private const string ManifestRelativePath = "Plugins/Android/GooglePlayGamesManifest.plugin/";
+#else
         private const string ManifestRelativePath =
             "Plugins/Android/GooglePlayGamesManifest.plugin/AndroidManifest.xml";
+#endif
 
         private const string RootFolderName = "GooglePlayGames";
 
@@ -187,7 +191,11 @@ namespace GooglePlayGames.Editor
         ///     file. </remarks>
         private static string ManifestPath
         {
+#if GAMEWORKSTORE_COMPATIBILITY
+            get { return SlashesToPlatformSeparator(Path.Combine(Application.dataPath, ManifestRelativePath)); }
+#else
             get { return SlashesToPlatformSeparator(Path.Combine(RootPath, ManifestRelativePath)); }
+#endif
         }
 
         /// <summary>
@@ -566,8 +574,12 @@ namespace GooglePlayGames.Editor
                     GPGSProjectSettings.Instance.Get(ent.Value, overrideValues);
                 manifestBody = manifestBody.Replace(ent.Key, value);
             }
-
+#if GAMEWORKSTORE_COMPABILITY
+            GPGSUtil.WriteFile(destFilename + "AndroidManifest.xml", manifestBody);
+            GPGSUtil.WriteFile(destFilename + "project.settings", "target=android-16\nandroid.library = true");
+#else
             GPGSUtil.WriteFile(destFilename, manifestBody);
+#endif
             GPGSUtil.UpdateGameInfo();
         }
 
