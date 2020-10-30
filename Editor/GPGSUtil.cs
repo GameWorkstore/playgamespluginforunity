@@ -682,6 +682,9 @@ namespace GooglePlayGames.Editor
         /// </summary>
         public static void CheckAndFixDependencies()
         {
+#if GAMEWORKSTORE_COMPATIBILITY
+            return;
+#else
             string depPath =
                 SlashesToPlatformSeparator(Path.Combine(GPGSUtil.RootPath,
                     "Editor/GooglePlayGamesPluginDependencies.xml"));
@@ -705,6 +708,7 @@ namespace GooglePlayGames.Editor
             }
 
             doc.Save(depPath);
+#endif
         }
 
         /// <summary>
