@@ -263,7 +263,6 @@ namespace GooglePlayGames.Editor
         /// <param name="body">Body of the file to write.</param>
         public static void WriteFile(string file, string body)
         {
-#if 
             file = SlashesToPlatformSeparator(file);
             DirectoryInfo dir = Directory.GetParent(file);
             dir.Create();
@@ -462,7 +461,7 @@ namespace GooglePlayGames.Editor
         public static string GetAndroidSdkPath()
         {
             string sdkPath = EditorPrefs.GetString("AndroidSdkRoot");
-
+#if GAMEWORKSTORE_COMPATIBILITY
             // Unity 2019.x added installation of the Android SDK in the AndroidPlayer directory
             // so fallback to searching for it there.
             if (string.IsNullOrEmpty(sdkPath) || EditorPrefs.GetBool("SdkUseEmbedded"))
@@ -477,7 +476,7 @@ namespace GooglePlayGames.Editor
                     }
                 }
             }
-
+#endif
             if (sdkPath != null && (sdkPath.EndsWith("/") || sdkPath.EndsWith("\\")))
             {
                 sdkPath = sdkPath.Substring(0, sdkPath.Length - 1);
