@@ -1,3 +1,4 @@
+#define GAMEWORKSTORE_COMPATIBILITY
 // <copyright file="GameInfo.cs" company="Google Inc.">
 // Copyright (C) 2015 Google Inc. All Rights Reserved.
 //
@@ -36,10 +37,17 @@ namespace GooglePlayGames {
         private const string UnescapedWebClientId = "WEB_CLIENTID";
         private const string UnescapedNearbyServiceId = "NEARBY_SERVICE_ID";
 
+#if GAMEWORKSTORE_COMPATIBILITY
+        public static string ApplicationId = ""; //Fill upon application start
+        public static string IosClientId = "__IOS_CLIENTID__"; //Fill upon application start
+        public static string WebClientId = ""; //Fill upon application start
+        public static string NearbyConnectionServiceId = ""; //Fill upon application start
+#else
         public const string ApplicationId = ""; // Filled in automatically
         public const string IosClientId = "__IOS_CLIENTID__"; // Filled in automatically
         public const string WebClientId = ""; // Filled in automatically
         public const string NearbyConnectionServiceId = "";
+#endif
 
         public static bool ApplicationIdInitialized() {
             return !string.IsNullOrEmpty(ApplicationId) && !ApplicationId.Equals(ToEscapedToken(UnescapedApplicationId));

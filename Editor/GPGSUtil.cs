@@ -642,6 +642,9 @@ namespace GooglePlayGames.Editor
         /// </summary>
         public static void UpdateGameInfo()
         {
+#if GAMEWORKSTORE_COMPATIBILITY
+            return;
+#else
             string fileBody = ReadEditorTemplate("template-GameInfo");
 
             foreach (KeyValuePair<string, string> ent in replacements)
@@ -652,6 +655,7 @@ namespace GooglePlayGames.Editor
             }
 
             WriteFile(GameInfoPath, fileBody);
+#endif
         }
 
         /// <summary>
