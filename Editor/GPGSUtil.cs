@@ -222,7 +222,7 @@ namespace GooglePlayGames.Editor
         /// <param name="path">Path with correct separators.</param>
         public static string SlashesToPlatformSeparator(string path)
         {
-            return path.Replace("/", System.IO.Path.DirectorySeparatorChar.ToString());
+            return path.Replace("/", Path.DirectorySeparatorChar.ToString());
         }
 
         /// <summary>
@@ -263,6 +263,7 @@ namespace GooglePlayGames.Editor
         /// <param name="body">Body of the file to write.</param>
         public static void WriteFile(string file, string body)
         {
+#if 
             file = SlashesToPlatformSeparator(file);
             DirectoryInfo dir = Directory.GetParent(file);
             dir.Create();
@@ -461,7 +462,7 @@ namespace GooglePlayGames.Editor
         public static string GetAndroidSdkPath()
         {
             string sdkPath = EditorPrefs.GetString("AndroidSdkRoot");
-#if UNITY_2019
+
             // Unity 2019.x added installation of the Android SDK in the AndroidPlayer directory
             // so fallback to searching for it there.
             if (string.IsNullOrEmpty(sdkPath) || EditorPrefs.GetBool("SdkUseEmbedded"))
@@ -476,7 +477,7 @@ namespace GooglePlayGames.Editor
                     }
                 }
             }
-#endif
+
             if (sdkPath != null && (sdkPath.EndsWith("/") || sdkPath.EndsWith("\\")))
             {
                 sdkPath = sdkPath.Substring(0, sdkPath.Length - 1);
@@ -643,7 +644,7 @@ namespace GooglePlayGames.Editor
         /// </summary>
         public static void UpdateGameInfo()
         {
-            string fileBody = GPGSUtil.ReadEditorTemplate("template-GameInfo");
+            string fileBody = ReadEditorTemplate("template-GameInfo");
 
             foreach (KeyValuePair<string, string> ent in replacements)
             {
@@ -652,7 +653,7 @@ namespace GooglePlayGames.Editor
                 fileBody = fileBody.Replace(ent.Key, value);
             }
 
-            GPGSUtil.WriteFile(GameInfoPath, fileBody);
+            WriteFile(GameInfoPath, fileBody);
         }
 
         /// <summary>

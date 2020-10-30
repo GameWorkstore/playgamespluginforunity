@@ -42,3 +42,11 @@ If you are using this library and want to submit a change, go ahead! Overall, th
 - Or is an improvement to already supported feature.
 
 Also, you can donate to allow us to drink coffee while we improve it for you!
+
+# Troubleshoot
+
+> Error Unity AndroidJavaException: java.lang.ClassNotFoundException: com.google.android.gms.games.Games
+
+Disable Minify on Project Settings > Publish Settings to avoid stripping of bundle aar objects on the build process.
+Minify is very good for reduce the binary size,
+but only when everything is setup properly.
