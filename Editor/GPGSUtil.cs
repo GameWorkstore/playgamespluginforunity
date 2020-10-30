@@ -131,8 +131,7 @@ namespace GooglePlayGames.Editor
                         string[] packageManagerSubfolder = Directory.GetDirectories(dir, RootFolderName, SearchOption.AllDirectories);
                         foreach (var subdir in packageManagerSubfolder)
                         {
-                            //UnityEngine.Debug.Log(subdir);
-                            mRootPath = SlashesToPlatformSeparator(subdir);
+                            mRootPath = SlashesToPlatformSeparator(Application.dataPath + "/../" + subdir);
                             return mRootPath;
                         }
                     }
