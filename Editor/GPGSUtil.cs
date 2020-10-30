@@ -530,9 +530,13 @@ namespace GooglePlayGames.Editor
         /// <returns><c>true</c>, if the file exists <c>false</c> otherwise.</returns>
         public static bool AndroidManifestExists()
         {
+#if GAMEWORKSTORE_COMPATIBILITY
+            return File.Exists(ManifestPath + "AndroidManifest.xml") && File.Exists(ManifestPath + "project.settings");
+#else
             string destFilename = ManifestPath;
 
             return File.Exists(destFilename);
+#endif
         }
 
         /// <summary>
@@ -574,7 +578,7 @@ namespace GooglePlayGames.Editor
                     GPGSProjectSettings.Instance.Get(ent.Value, overrideValues);
                 manifestBody = manifestBody.Replace(ent.Key, value);
             }
-#if GAMEWORKSTORE_COMPABILITY
+#if GAMEWORKSTORE_COMPATIBILITY
             GPGSUtil.WriteFile(destFilename + "AndroidManifest.xml", manifestBody);
             GPGSUtil.WriteFile(destFilename + "project.settings", "target=android-16\nandroid.library = true");
 #else
