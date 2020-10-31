@@ -50,3 +50,8 @@ Also, you can donate to allow us to drink coffee while we improve it for you!
 Disable Minify on Project Settings > Publish Settings to avoid stripping of bundle aar objects on the build process.
 Minify is very good for reduce the binary size,
 but only when everything is setup properly.
+
+> Error TokenFragment Setting result error status code to: 16
+
+Certify to include SHA-1 of all your android applications into google play games configuration (Android UploadKey and Android App Signing).
+Ideally, you just need to add two into the console (Android UploadKey and Android App Signing).
