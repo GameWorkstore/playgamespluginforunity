@@ -580,7 +580,7 @@ namespace GooglePlayGames.Editor
             }
 #if GAMEWORKSTORE_COMPATIBILITY
             GPGSUtil.WriteFile(destFilename + "AndroidManifest.xml", manifestBody);
-            GPGSUtil.WriteFile(destFilename + "project.settings", "target=android-16\nandroid.library = true");
+            GPGSUtil.WriteFile(destFilename + "project.properties", "target=android-16\nandroid.library = true");
 #else
             GPGSUtil.WriteFile(destFilename, manifestBody);
 #endif
