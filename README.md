@@ -1,9 +1,9 @@
-# playgamespluginforunity
+# Play Games Plugin for Unity
 Unity NPM version of Google Play Games Plugin! This repository applies the same APACHE 2.0 license terms of the original version.
 
 Original repo: https://github.com/playgameservices/play-games-plugin-for-unity
 
-# current version
+# Current Version
 You can find at GooglePlayGames/PluginVersion.cs
 
 # How to install
